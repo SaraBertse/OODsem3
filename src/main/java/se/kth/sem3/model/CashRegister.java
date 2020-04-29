@@ -1,7 +1,6 @@
 
 package se.kth.sem3.model;
-import se.kth.sem3.controller.Controller;
-import se.kth.sem3.model.PurchaseInfoDTO;
+
 
 /**
  * Represents the cash register.

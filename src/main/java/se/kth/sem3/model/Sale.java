@@ -29,19 +29,56 @@ public class Sale {
     
         String description = item.getDescription();
         Amount price = item.getPrice();
-        double calculatePriceWithVAT = (item.getPrice().getAmount()) + 
-        (item.getPrice().getAmount()*(item.getTaxRate().getAmount())/100);
-        Amount priceWithVAT = new Amount(calculatePriceWithVAT);
+        Amount priceWithVAT = new Amount(calculatePriceWithVAT(item, quantity));
         Amount priceMultiplied = priceWithVAT.multiplied(new Amount(quantity));
        
-        
         runningTotal = updateRunningTotal(runningTotal, priceMultiplied);
-        calculateTotalVAT = calculateTotalVAT.plus(new Amount
-        (item.getPrice().getAmount()*(item.getTaxRate().getAmount())/100));
-        this.totalVAT = calculateTotalVAT;
+        calculateTotalVAT(item, quantity);
         
         PurchaseInfoDTO purchaseInfo = new PurchaseInfoDTO(description, price, runningTotal);
         
+        addAndCheckForDuplicates(item, quantity);
+       
+        return purchaseInfo;
+    }
+    
+    /**
+     * Calculates the price with VAT.
+     * 
+     * @param item the current item it's being calculated for.
+     * @param quantity How many of the item are being purchased.
+     * 
+     * @return The price with VAT.
+     */
+    private double calculatePriceWithVAT(ItemDTO item, int quantity){
+       double calculatePriceWithVat = (item.getPrice().getAmount()) + 
+        (item.getPrice().getAmount()*(item.getTaxRate().getAmount())/100);
+       
+       return calculatePriceWithVat;
+    }
+    
+    /**
+     * Calculates the total VAT for the sale.
+     * 
+     * @param item The item is needed to calculate the VAT from the tax rate and 
+     * price.
+     * @param quantity The quantity of the item.
+     */
+    private void calculateTotalVAT(ItemDTO item, int quantity){
+        calculateTotalVAT = calculateTotalVAT.plus(new Amount
+        ((item.getPrice().getAmount()*quantity)*(item.getTaxRate().getAmount())/100));
+        this.totalVAT = calculateTotalVAT;
+    }
+            
+    /**
+     * Add the items to a list, for the sales log to send to the receipt,
+     * and checks if any of the items are duplicates. If they are duplicates, 
+     * the items are added together and the quantity is increased.
+     * 
+     * @param item The item being added.
+     * @param quantity The quantity of the item.
+     */
+    private void addAndCheckForDuplicates(ItemDTO item, int quantity){
         boolean checkIfDuplicate = false;
         int i = 0;
         for (ItemData cycledItems : items){
@@ -56,13 +93,10 @@ public class Sale {
         }
         
         if (checkIfDuplicate == false){
-            items.add(new ItemData(item.getDescription(), quantity, price));
+            items.add(new ItemData(item.getDescription(), quantity, item.getPrice()));
         }
-        
-        return purchaseInfo;
     }
-        
-   
+    
     /**
      * Calculates the updated running total after each item.
      * 

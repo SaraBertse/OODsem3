@@ -2,7 +2,6 @@ package se.kth.sem3.view;
 import se.kth.sem3.controller.Controller;
 import se.kth.sem3.model.PurchaseInfoDTO;
 import se.kth.sem3.model.Amount;
-import java.util.*;
 
 /**
  * Currently the placeholder class for the user interface. Also has a 

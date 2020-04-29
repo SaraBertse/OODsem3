@@ -11,7 +11,6 @@ import se.kth.sem3.integration.HandlerCreator;
 import se.kth.sem3.model.Amount;
 import se.kth.sem3.model.CashRegister;
 import se.kth.sem3.integration.PrinterHandler;
-import se.kth.sem3.model.SalesLogDTO;
 
 /**
  * The controller class passes calls from the view to the model or integration.
@@ -111,6 +110,9 @@ public class Controller {
         return receipt;
     }
     
+    /**
+     * Updates the external inventory system and the external accounting system.
+     */
     public void updateExternalSystems(){
         extInv.updateInventory(sale.getSalesLogDTO());
         extAcc.updateAccounting(sale.getSalesLogDTO());

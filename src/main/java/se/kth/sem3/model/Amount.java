@@ -70,12 +70,21 @@ public class Amount {
     public Amount multiplied(Amount other){
         return new Amount(amount * other.amount);
     }
-        
+    
+    /**
+    * Gets an amount.
+    * 
+    * @return the amount. 
+    */    
     public double getAmount(){
     
     return amount;
 }
     
+    /**
+     * Prints out the value of an <code>Amount</code>
+     * @return the value.
+     */
     public String toString(){
         
         return String.valueOf(amount);

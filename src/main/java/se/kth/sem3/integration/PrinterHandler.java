@@ -3,8 +3,6 @@ package se.kth.sem3.integration;
 import se.kth.sem3.model.SalesLogDTO;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import se.kth.sem3.model.Sale.ItemData;
 
 /**

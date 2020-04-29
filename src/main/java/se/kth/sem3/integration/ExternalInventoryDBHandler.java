@@ -1,7 +1,5 @@
 
 package se.kth.sem3.integration;
-import java.util.ArrayList;
-import java.util.List;
 import se.kth.sem3.model.ItemDTO;
 //import se.kth.sem3.integration.InventoryDatabase;
 import se.kth.sem3.model.Amount;
