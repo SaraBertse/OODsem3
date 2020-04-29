@@ -57,7 +57,7 @@ public class Controller {
      * 
      * @return Returns item description, item price and running total. 
      */
-    public PurchaseInfoDTO enterItem(int itemID, int quantity){
+   /* public PurchaseInfoDTO enterItem(int itemID, int quantity){
         int i = 0; //Counts iterations. Maybe needs to be lowered, I dunno.
         ItemDTO item = extInv.retrieveItemInfo(itemID);
         for (int items : enteredIDs){
@@ -81,7 +81,22 @@ public class Controller {
         }
        
         return purchaseInfo;
+    }*/
+    
+    
+    
+     public PurchaseInfoDTO enterItem(int itemID, int quantity){
+
+        ItemDTO item = extInv.retrieveItemInfo(itemID);
+        
+                       
+        enteredIDs.add(new Integer(itemID));
+        PurchaseInfoDTO purchaseInfo = sale.updatePurchaseInfo(item, quantity);  
+       
+        return purchaseInfo;
     }
+    
+    
     
     /**
      * Ends the sale and returns the total price for the sale.

@@ -47,7 +47,24 @@ public class Sale {
         PurchaseInfoDTO purchaseInfo = new PurchaseInfoDTO(description, price, runningTotal);
     
         //This could be in the threat of Long Method and a bit unclear, could go into it's own thing.
-        items.add(new ItemData(item.getDescription(), quantity, price));
+       //items.add(new ItemData(item.getDescription(), quantity, price));
+        
+        boolean checkIfDuplicate = false;
+        int i = 0;
+        for (ItemData cycledItems : items){
+           String comparedDescription = cycledItems.getDescription();
+           i++;
+           if (comparedDescription.equals(item.getDescription())){
+               ItemData toReplace = items.get(i-1);
+               toReplace.setQuantity(toReplace.getQuantity() + 1);
+               items.set(i-1, toReplace);
+               checkIfDuplicate = true;
+           }        
+        }
+        
+        if (checkIfDuplicate == false){
+            items.add(new ItemData(item.getDescription(), quantity, price));
+        }
         
         return purchaseInfo;
     }
@@ -93,6 +110,16 @@ public class Sale {
             this.description = description;
             this.quantity = quantity;
             this.price = price;
+        }
+        
+        public String getDescription(){
+        
+            return description;
+    }
+        
+        public int getQuantity(){
+            
+            return quantity;
         }
         
         public void setQuantity(int quantity){

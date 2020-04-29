@@ -26,17 +26,19 @@ public class View {
     public void sampleExecution(){
         
         contr.startSale();
-        PurchaseInfoDTO purchaseInfo1 = contr.enterItem(114, 2);
+        PurchaseInfoDTO purchaseInfo1 = contr.enterItem(111, 2);
         PurchaseInfoDTO purchaseInfo2 = contr.enterItem(112, 1);
-        PurchaseInfoDTO purchaseInfo3 = contr.enterItem(111, 3);
+        PurchaseInfoDTO purchaseInfo3 = contr.enterItem(114, 1);
         PurchaseInfoDTO purchaseInfo4 = contr.enterItem(111, 1);
+        PurchaseInfoDTO purchaseInfo5 = contr.enterItem(112, 1);
     
         System.out.println(purchaseInfo1);
         System.out.println(purchaseInfo2);
         System.out.println(purchaseInfo3);
         System.out.println(purchaseInfo4); 
+        System.out.println(purchaseInfo5);
         
-        Amount totalPrice = contr.endSale(purchaseInfo4);
+        Amount totalPrice = contr.endSale(purchaseInfo5);
         
         System.out.println("The total price is " + totalPrice);
         //New Amount not needed here
