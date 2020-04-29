@@ -2,6 +2,7 @@
 package se.kth.sem3.controller;
 import java.util.ArrayList;
 import java.util.List;
+import se.kth.sem3.integration.ExternalAccountingDBHandler;
 import se.kth.sem3.model.PurchaseInfoDTO;
 import se.kth.sem3.model.Sale;
 import se.kth.sem3.model.ItemDTO;
@@ -18,10 +19,11 @@ import se.kth.sem3.model.SalesLogDTO;
 public class Controller {
     private HandlerCreator handler;
     private ExternalInventoryDBHandler extInv;
+    private ExternalAccountingDBHandler extAcc;
     private CashRegister cashreg;
     private Sale sale;
     
-    public List<Integer> enteredIDs = new ArrayList<>();
+    private List<Integer> enteredIDs = new ArrayList<>();
     PrinterHandler printerHandler = new PrinterHandler();
     
     /**
@@ -43,6 +45,7 @@ public class Controller {
     public Controller(HandlerCreator handler, CashRegister cashreg){
         this.handler = handler;  
         this.extInv = handler.getExtInvDBHandler();
+        this.extAcc = handler.getAccInvDBHandler();
         this.cashreg = cashreg;
     }
     
@@ -106,5 +109,10 @@ public class Controller {
         String receipt = printerHandler.printReceipt(sale.getSalesLogDTO());
     
         return receipt;
+    }
+    
+    public void updateExternalSystems(){
+        extInv.updateInventory(sale.getSalesLogDTO());
+        extAcc.updateAccounting(sale.getSalesLogDTO());
     }
 }

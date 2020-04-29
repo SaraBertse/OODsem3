@@ -25,15 +25,6 @@ public class AmountTest {
         
     }
     
-    @BeforeAll
-    public static void setUpClass() {
-
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
     @BeforeEach
     public void setUp() {
         amtNoArgConstr = new Amount();
@@ -46,46 +37,108 @@ public class AmountTest {
 
     //WRite test to Also see that the equals thing is working!
     
-    
-    @Test //DONE WRITTEN
+    @Test 
     public void testPlus() {
-        int amountOfOperand1 = 5;
-        int amountOfOperand2 = 3;
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = 3.0;
         Amount operand1 = new Amount(amountOfOperand1);
         Amount operand2 = new Amount(amountOfOperand2);
         Amount expResult = new Amount(amountOfOperand1 + amountOfOperand2);
         Amount result = operand1.plus(operand2);
         assertEquals(expResult, result, "Wrong addition result");
     }
-    //Can test +[-amt], can test +0.
-
-    @Disabled
-    public void testMinus() {
-        System.out.println("minus");
-        Amount other = null;
-        Amount instance = null;
-        Amount expResult = null;
-        Amount result = instance.minus(other);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+   @Test
+    public void testPlusWithZero(){
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = 0.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 + amountOfOperand2);
+        Amount result = operand1.plus(operand2);
+        assertEquals(expResult, result, "Wrong addition with zero result");
     }
-
-    @Disabled
-    public void testMultiplied() {
-        System.out.println("multiplied");
-        Amount other = null;
-        Amount instance = null;
-        Amount expResult = null;
-        Amount result = instance.multiplied(other);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+    @Test
+    public void testPlusWithNegative(){
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = -3.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 + amountOfOperand2);
+        Amount result = operand1.plus(operand2);
+        assertEquals(expResult, result, "Wrong addition with negative result");
     }
 
     @Test
-    public void testToStringPositiveAmount() {
-        int representedAmount = 5;
+    public void testMinus() {
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = 3.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 - amountOfOperand2);
+        Amount result = operand1.minus(operand2);
+        assertEquals(expResult, result, "Wrong subtraction result");
+    }
+        
+    @Test
+    public void testMinusWithZero() {
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = 0.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 - amountOfOperand2);
+        Amount result = operand1.minus(operand2);
+        assertEquals(expResult, result, "Wrong subtraction result");
+    }
+    
+    @Test
+    public void testMinusWithNegative() {
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = -3.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 - amountOfOperand2);
+        Amount result = operand1.minus(operand2);
+        assertEquals(expResult, result, "Wrong subtraction result");
+    }
+
+    @Test
+    public void testMultiplied() {
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = 3.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 * amountOfOperand2);
+        Amount result = operand1.multiplied(operand2);
+        assertEquals(expResult, result, "Wrong multiplication result");
+    }
+    
+    @Test
+    public void testMultipliedWithZero() {
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = 0.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 * amountOfOperand2);
+        Amount result = operand1.multiplied(operand2);
+        assertEquals(expResult, result, "Wrong multiplication result");
+        }
+    
+     @Test
+    public void testMultipliedWithNegative() {
+        double amountOfOperand1 = 5.0;
+        double amountOfOperand2 = -3.0;
+        Amount operand1 = new Amount(amountOfOperand1);
+        Amount operand2 = new Amount(amountOfOperand2);
+        Amount expResult = new Amount(amountOfOperand1 * amountOfOperand2);
+        Amount result = operand1.multiplied(operand2);
+        assertEquals(expResult, result, "Wrong multiplication result");
+        }
+
+    @Test
+    public void testToString() {
+        double representedAmount = 5.0;
         Amount amount = new Amount(representedAmount);
-        String expResult = Integer.toString(representedAmount);
+        String expResult = Double.toString(representedAmount);
         String result = amount.toString();
         assertEquals(expResult, result, "Wrong string returned by toString");
     }

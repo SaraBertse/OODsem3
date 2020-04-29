@@ -6,10 +6,25 @@ package se.kth.sem3.integration;
  */
 public class HandlerCreator {
     ExternalInventoryDBHandler extInv = new ExternalInventoryDBHandler();
-    
+    ExternalAccountingDBHandler extAcc = new ExternalAccountingDBHandler();
  
+    /**
+     * Gets the external inventory database handler.
+     * 
+     * @return the external inventory database handler.
+     */
     public ExternalInventoryDBHandler getExtInvDBHandler(){
         
         return extInv;
+    }
+    
+    /**
+     * Gets the external accounting database handler.
+     * 
+     * @return the external accounting database handler.
+     */
+    public ExternalAccountingDBHandler getAccInvDBHandler(){
+        
+        return extAcc;
     }
 }

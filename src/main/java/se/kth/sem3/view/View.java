@@ -28,7 +28,7 @@ public class View {
         contr.startSale();
         PurchaseInfoDTO purchaseInfo1 = contr.enterItem(111, 2);
         PurchaseInfoDTO purchaseInfo2 = contr.enterItem(112, 1);
-        PurchaseInfoDTO purchaseInfo3 = contr.enterItem(114, 1);
+        PurchaseInfoDTO purchaseInfo3 = contr.enterItem(114, 2);
         PurchaseInfoDTO purchaseInfo4 = contr.enterItem(111, 1);
         PurchaseInfoDTO purchaseInfo5 = contr.enterItem(112, 1);
     
@@ -38,13 +38,15 @@ public class View {
         System.out.println(purchaseInfo4); 
         System.out.println(purchaseInfo5);
         
+        
         Amount totalPrice = contr.endSale(purchaseInfo5);
         
         System.out.println("The total price is " + totalPrice);
-        //New Amount not needed here
-        Amount change = contr.enterAmountPaid(new Amount(1000), totalPrice);
+       
+        Amount change = contr.enterAmountPaid(new Amount(200), totalPrice);
         
         System.out.println("The change is " + change);
+        System.out.println();
         
         String receipt = contr.getReceiptString();
         System.out.println(receipt);

@@ -6,10 +6,9 @@ package se.kth.sem3.model;
  * and running total.
  */
 public class PurchaseInfoDTO {
-    
-    String description;
-    Amount price;
-    Amount runningTotal;
+    private String description;
+    private Amount price;
+    private Amount runningTotal;
     
     /**
      * Creates a new instance with purchase info.

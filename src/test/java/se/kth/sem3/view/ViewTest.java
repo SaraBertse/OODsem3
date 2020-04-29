@@ -46,45 +46,6 @@ public class ViewTest {
         instanceToTest.sampleExecution();
         String printout = printoutBuffer.toString();
         String expectedOutput = "price";
-        assertTrue(printout.contains(expectedOutput), "UI did not start correctly.");
+        assertTrue(printout.contains(expectedOutput), "View class isn't working.");
     }
 }
-
-/*public class ViewTest {
-    private View instanceToTest;
-    private ByteArrayOutputStream printoutBuffer;
-    private PrintStream originalSysOut;
-    
-    public ViewTest() {
-    }
-   
-    
-    @BeforeEach
-    public void setUp() {
-        Controller contr = new Controller();
-        instanceToTest = new View(contr);
-        
-        printoutBuffer = new ByteArrayOutputStream();
-        PrintStream inMemSysOut = new PrintStream(printoutBuffer);
-        originalSysOut = System.out;
-        System.setOut(inMemSysOut);
-    }
-    
-    @AfterEach
-    public void tearDown() {
-        instanceToTest = null;
-        
-        printoutBuffer = null;
-        System.setOut(originalSysOut);
-    }
-
-    @Test
-    public void testSampleExecution() {
-        instanceToTest.sampleExecution();
-        String printout = printoutBuffer.toString();
-        String expectedOutput = "blah";
-        assertTrue(printout.contains(expectedOutput), "SampleExecution prints wrong thing.");
-    }
-    
-}
-*/

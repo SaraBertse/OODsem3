@@ -9,12 +9,12 @@ import java.util.List;
  */
 public class Sale {
     private Amount totalPrice;
-    Amount payment;
-    Amount totalVAT; 
-    Amount runningTotal = new Amount(0);
-    Amount calculateTotalVAT = new Amount(0);
-    LocalDateTime timeAndDateOfSale = LocalDateTime.now();
-    public List<ItemData> items = new ArrayList<>();
+    private Amount payment;
+    private Amount totalVAT; 
+    private Amount runningTotal = new Amount(0);
+    private Amount calculateTotalVAT = new Amount(0);
+    private LocalDateTime timeAndDateOfSale = LocalDateTime.now();
+    private List<ItemData> items = new ArrayList<>();
     
     /**
      * Updates the purchase info with description, price and running total.
@@ -41,9 +41,6 @@ public class Sale {
         this.totalVAT = calculateTotalVAT;
         
         PurchaseInfoDTO purchaseInfo = new PurchaseInfoDTO(description, price, runningTotal);
-    
-        //This could be in the threat of Long Method and a bit unclear, could go into it's own thing.
-       //items.add(new ItemData(item.getDescription(), quantity, price));
         
         boolean checkIfDuplicate = false;
         int i = 0;
@@ -92,8 +89,6 @@ public class Sale {
     public Amount calculateChange(Amount payment, Amount totalPrice){
         
         Amount change = payment.minus(totalPrice); 
-       
-        System.out.println("Running total: " + totalPrice);
         
         return change;
     }
@@ -164,7 +159,7 @@ public class Sale {
          */
         public String toString(){
             
-            return "Item: " + description + "    Quantity: " + quantity + "    Price each:" + price;
+            return "Item: " + description + "    Quantity: " + quantity + "    Price each: " + price;
         }
     }
   

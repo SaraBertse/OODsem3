@@ -25,6 +25,7 @@ public class Main {
       
         Controller contr = new Controller(handle, cashreg);
         new View(contr).sampleExecution();
+        contr.updateExternalSystems();
     }
     
 }

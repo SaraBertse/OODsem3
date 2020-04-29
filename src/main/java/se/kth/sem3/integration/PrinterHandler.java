@@ -24,20 +24,16 @@ public class PrinterHandler {
         LocalDateTime timeAndDate = salesLog.getTimeAndDateOfSale();
         builder.append("Time and date of sale: ");
         appendLine(builder, timeAndDate.toString());
-        endSection(builder);
-
         builder.append("Store name: ");
         appendLine(builder, salesLog.getStoreName());
         builder.append("Store address: ");
         appendLine(builder, salesLog.getStoreAddress());
-        
         for (ItemData item : (ArrayList<ItemData>)salesLog.getItems()){
             builder.append(item);
             endSection(builder);
         }
         builder.append("Total price of sale: ");
         appendLine(builder, salesLog.getTotalPrice().toString());
-        
         builder.append("Total VAT of sale: ");
         appendLine(builder, salesLog.getTotalVAT().toString()); 
         builder.append("Amount paid: ");
@@ -50,7 +46,7 @@ public class PrinterHandler {
     }
         
     /**
-     * Adds a text-line and makes a blank row.
+     * Adds a line of text and makes a line break.
      * 
      * @param builder The builder object that's being used.
      * @param line The text that should be printed.
@@ -61,7 +57,7 @@ public class PrinterHandler {
     }
 
     /**
-     * Makes a blank row at the end.
+     * Makes a line break at the end.
      * @param builder  The builder object that's being used.
      */
     private void endSection(StringBuilder builder) {

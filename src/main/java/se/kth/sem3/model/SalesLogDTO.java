@@ -11,15 +11,14 @@ import java.util.List;
  * total price of sale, VAT for the sale, amount paid and change.
  */
 public class SalesLogDTO {
-
-LocalDateTime timeAndDateOfSale;
-String storeName;
-String storeAddress;
-List items; 
-Amount totalPrice;
-Amount totalVAT; 
-Amount amountPaid;
-Amount change;
+    private LocalDateTime timeAndDateOfSale;
+    private String storeName;
+    private String storeAddress;
+    private List items; 
+    private Amount totalPrice;
+    private Amount totalVAT; 
+    private Amount amountPaid;
+    private Amount change;
    
 
     /**

@@ -5,7 +5,7 @@ package se.kth.sem3.model;
  * Represents an amount of money.
  */
 public class Amount {
-    double amount;
+    private double amount;
     
     /**
      * Creates a new instance with the value 0.
