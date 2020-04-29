@@ -35,7 +35,6 @@ public class AmountTest {
     public void tearDown() {
     }
 
-    //WRite test to Also see that the equals thing is working!
     
     @Test 
     public void testPlus() {
