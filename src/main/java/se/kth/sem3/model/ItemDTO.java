@@ -5,11 +5,9 @@ package se.kth.sem3.model;
  * Represents an item in the store.
  */
 public class ItemDTO {
-    
     String description;
     Amount price;
     Amount taxRate;
-    //Don't forget to overload method too, for the default value thing
     
     /**
      * Creates a new instance.

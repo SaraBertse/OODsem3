@@ -10,15 +10,11 @@ import java.util.List;
 public class Sale {
     private Amount totalPrice;
     Amount payment;
-    Amount totalVAT;
-    
-    public List<ItemData> items = new ArrayList<>();
-   
-    
-  
+    Amount totalVAT; 
     Amount runningTotal = new Amount(0);
     Amount calculateTotalVAT = new Amount(0);
     LocalDateTime timeAndDateOfSale = LocalDateTime.now();
+    public List<ItemData> items = new ArrayList<>();
     
     /**
      * Updates the purchase info with description, price and running total.
@@ -86,6 +82,13 @@ public class Sale {
         return updatedRunningTotal;
     }
    
+    /**
+     * Calculates the change that belongs to the customer.
+     * 
+     * @param payment This is how much the customer paid.
+     * @param totalPrice This is the total price of the sale.
+     * @return Returns how much change the customer should get.
+     */
     public Amount calculateChange(Amount payment, Amount totalPrice){
         
         Amount change = payment.minus(totalPrice); 
@@ -95,43 +98,81 @@ public class Sale {
         return change;
     }
     
+    /**
+     * Transfers the value of the amount the customer paid to the Sale.
+     * 
+     * @param paidAmount 
+     */
     public void updateAmountPaid(Amount paidAmount){
         this.payment = paidAmount;
     }
     
     
-    //Is for the SaleLog, to be able to enter the desc, quantity and price in the receipt
+    /**
+     * This class represents item data, with description, quantity and price.
+     */
     public class ItemData{
         public String description;
         public int quantity;
         public Amount price;
         
+        /**
+         * Creates an instance of ItemData.
+         * 
+         * @param description The item's description.
+         * @param quantity The quantity of that type of item.
+         * @param price The price for the item.
+         */
         public ItemData(String description, int quantity, Amount price){
             this.description = description;
             this.quantity = quantity;
             this.price = price;
         }
         
+        /**
+         * Get the item description.
+         * 
+         * @return the item description.
+         */
         public String getDescription(){
         
             return description;
     }
-        
+        /**
+         * Get the quantity of the same item.
+         * 
+         * @return the quantity of the same item. 
+         */
         public int getQuantity(){
             
             return quantity;
         }
         
+        /**
+         * Set the quantity of a certain item.
+         * 
+         * @param quantity the quantity of an item. 
+         */
         public void setQuantity(int quantity){
             this.quantity = quantity;
         }
         
+        /**
+         * Displays printed description, quantity and price of an item.
+         * 
+         * @return The formatted string with item description, quantity and price. 
+         */
         public String toString(){
             
             return "Item: " + description + "    Quantity: " + quantity + "    Price each:" + price;
         }
     }
   
+    /**
+     * Creates a new sales log (DTO).
+     * 
+     * @return the sales log (DTO).
+     */
     public SalesLogDTO getSalesLogDTO(){
     
     SalesLogDTO salesLog = new SalesLogDTO(timeAndDateOfSale, "BestShop", "Shopway 12", 

@@ -26,21 +26,41 @@ public class PurchaseInfoDTO {
         this.runningTotal = runningTotal;
     }
     
+    /**
+     * Get the item description.
+     * 
+     * @return the description. 
+     */
     public String getDescription(){
         
         return description;
     }
     
+    /**
+     * Get the price of the item.
+     * 
+     * @return the price. 
+     */
     public Amount getPrice(){
         
         return price;
     }
     
+    /**
+     * Get the running total for the sale.
+     * 
+     * @return the running total.
+     */
     public Amount getRunningTotal(){
     
         return runningTotal;
     }
     
+    /**
+     * Displays description, price and running total as a string.
+     * 
+     * @return the string displaying description, price and running total. 
+     */
     public String toString(){
         
         return "Description: " + description + " Price: " + price + " Running Total " + runningTotal;

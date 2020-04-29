@@ -7,8 +7,7 @@ package se.kth.sem3.integration;
 public class HandlerCreator {
     ExternalInventoryDBHandler extInv = new ExternalInventoryDBHandler();
     
-    
-    
+ 
     public ExternalInventoryDBHandler getExtInvDBHandler(){
         
         return extInv;

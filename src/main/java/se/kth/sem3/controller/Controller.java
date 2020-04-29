@@ -19,27 +19,26 @@ public class Controller {
     private HandlerCreator handler;
     private ExternalInventoryDBHandler extInv;
     private CashRegister cashreg;
+    private Sale sale;
     
-     public List<Integer> enteredIDs = new ArrayList<>();
+    public List<Integer> enteredIDs = new ArrayList<>();
+    PrinterHandler printerHandler = new PrinterHandler();
     
     /**
      * Creates a new sale
      */
     public void startSale(){
-        Sale sale = new Sale();
+        this.sale = new Sale();
     }
     //Need this for now, because otherwise sale.updatePurchaseItem doesn't work...
-    Sale sale = new Sale();
-    
-    public Controller(){
-        
-    }
+    //Sale sale = new Sale();
     
     /**
      * Creates a new instance.
      * 
      * @param handler A HandlerCreator is needed to get the external inventory
      * database handler that the controller uses.
+     * @param cashreg A cash register is needed for later calculations.
      */
     public Controller(HandlerCreator handler, CashRegister cashreg){
         this.handler = handler;  
@@ -47,7 +46,8 @@ public class Controller {
         this.cashreg = cashreg;
     }
     
-    PrinterHandler printerHandler = new PrinterHandler();
+    
+    
     /**
      * Inputs the item ID and quantity, and outputs purchase info in the form
      * of description, price and running total.
@@ -56,35 +56,7 @@ public class Controller {
      * @param quantity How many of the item is being purchased.
      * 
      * @return Returns item description, item price and running total. 
-     */
-   /* public PurchaseInfoDTO enterItem(int itemID, int quantity){
-        int i = 0; //Counts iterations. Maybe needs to be lowered, I dunno.
-        ItemDTO item = extInv.retrieveItemInfo(itemID);
-        for (int items : enteredIDs){
-            if (itemID == items){
-                enteredIDs.get(i); //Gets the latest object
-            }
-            else{
-                                
-            enteredIDs.add(new Integer(itemID));
-            PurchaseInfoDTO purchaseInfo = sale.updatePurchaseInfo(item, quantity);
-                //So I basically want it to check if the item number has been entered.
-                //If it has, it increases the quantity of that by 1.
-                //Maybe that's the problem, how can you increase the quantity 
-                //From before... From the previous item.
-                
-                //So I need to see how to access that quantity, where it's stored.
-                //And see if I can mess with a value that's already there.
-               
-            }
-           
-        }
-       
-        return purchaseInfo;
-    }*/
-    
-    
-    
+     */  
      public PurchaseInfoDTO enterItem(int itemID, int quantity){
 
         ItemDTO item = extInv.retrieveItemInfo(itemID);
@@ -95,7 +67,6 @@ public class Controller {
        
         return purchaseInfo;
     }
-    
     
     
     /**
@@ -111,6 +82,13 @@ public class Controller {
         return totalPrice;
     }
     
+    /**
+     * Takes the amount that was paid and returns the change.
+     * 
+     * @param payment How much the customer paid.
+     * @param totalPrice The total price of the sale.
+     * @return Returns how much change belongs to the customer.
+    */
     public Amount enterAmountPaid(Amount payment, Amount totalPrice){
        
         Amount change = cashreg.addPayment(payment, totalPrice);
@@ -119,6 +97,11 @@ public class Controller {
         return change;
     }
     
+    /**
+     * Displays the receipt on the View.
+     * 
+     * @return Returns the formatted receipt with all relevant info. 
+     */
     public String getReceiptString(){
         String receipt = printerHandler.printReceipt(sale.getSalesLogDTO());
     

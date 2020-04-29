@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package se.kth.sem3.integration;
 import se.kth.sem3.model.SalesLogDTO;
 import java.time.LocalDateTime;
@@ -12,11 +8,16 @@ import java.util.List;
 import se.kth.sem3.model.Sale.ItemData;
 
 /**
- *
- * @author sarab
+ * This is the class that communicates with the printer.
  */
 public class PrinterHandler {
     
+    /**
+     * Creates a formatted receipt with the info from the sales log.
+     * 
+     * @param salesLog The sales log (DTO) contains all the info about a sale.
+     * @return Returns the formatted receipt.
+     */
     public String printReceipt(SalesLogDTO salesLog){
         StringBuilder builder = new StringBuilder();
        
@@ -48,11 +49,21 @@ public class PrinterHandler {
         return builder.toString();
     }
         
+    /**
+     * Adds a text-line and makes a blank row.
+     * 
+     * @param builder The builder object that's being used.
+     * @param line The text that should be printed.
+     */
      private void appendLine(StringBuilder builder, String line) {
         builder.append(line);
         builder.append("\n");
     }
 
+    /**
+     * Makes a blank row at the end.
+     * @param builder  The builder object that's being used.
+     */
     private void endSection(StringBuilder builder) {
         builder.append("\n");
     }

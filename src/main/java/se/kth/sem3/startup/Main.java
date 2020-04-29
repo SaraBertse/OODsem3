@@ -13,6 +13,10 @@ import se.kth.sem3.model.SalesLogDTO;
  */
 public class Main {
     
+    /**
+     * The main method, which controls the flow of the program.
+     * @param args Leave as is with no changes.
+     */
     public static void main(String args[]){
         
         HandlerCreator handle = new HandlerCreator();

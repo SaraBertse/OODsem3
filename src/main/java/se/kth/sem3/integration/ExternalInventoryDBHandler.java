@@ -1,31 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package se.kth.sem3.integration;
 import java.util.ArrayList;
 import java.util.List;
 import se.kth.sem3.model.ItemDTO;
 import se.kth.sem3.integration.InventoryDatabase;
 import se.kth.sem3.model.Amount;
+
 /**
- *
- * @author sarab
+ * This is the class that handles the communication between the program 
+ * and the external inventory.
  */
 public class ExternalInventoryDBHandler {
+    ItemDTO returnedItem;
     
-    
-    //Maybe best handled with switches, so like 111, 112, 113, for different items.
-    //And then it returns the one that matches.
-    //private List<ItemDTO> items = new ArrayList<>();
-    
-    //It's static because it doesn't change, the items shall be immutable.
-    //Private because there's no need for it to be public?
-    //ItemDTO because it might as well get the entire DTO. Even if it doesn't,
-    //That doesn't matter in our scenario, whatever type of info it is, it can 
-    //be merged into a DTO later. But to make it easier, we say it's in the same format.
-   
+    /**
+     * Retrieves the description, price and tax rate of an item as an item DTO.
+     * 
+     * @param ItemID This is the unique ID of an item.
+     * @return The item DTO with description, price and tax rate is returned.
+     */
     public ItemDTO retrieveItemInfo(int ItemID){
         
         ItemDTO itemDTO = fetchItem(ItemID);
@@ -33,20 +26,18 @@ public class ExternalInventoryDBHandler {
         return itemDTO;
     }
     
-    
-    
-         ItemDTO returnedItem;
-    
+    /**
+     * This is the mockup database that connects the items with their item ID.
+     * @param itemID The item's unique ID.
+     * @return Returns the item that matches the item ID.
+     */
+    private ItemDTO fetchItem(int itemID){
+        
     ItemDTO item1 = new ItemDTO("milk", new Amount(12), new Amount(12));
     ItemDTO item2 = new ItemDTO("bread", new Amount(20), new Amount(12));
     ItemDTO item3 = new ItemDTO("snickers", new Amount(15), new Amount(25));
     ItemDTO item4 = new ItemDTO("tomato", new Amount(2), new Amount(6));
-    
-    
-    private ItemDTO fetchItem(int itemID){
         
-        //This itemID should be sent on from the View, through the controller
-        //and the DBHandler
         switch(itemID) {
             case 111: returnedItem = item1;
                 break;

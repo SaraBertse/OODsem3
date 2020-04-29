@@ -13,6 +13,7 @@ public class Amount {
     public Amount(){
         this(0);
     }
+    
     /**
      * Creates a new instance.
      * 
@@ -23,8 +24,8 @@ public class Amount {
     }
     
     /**
-     * If two <code>Amount</code>s represent the same value, then they are
-     * equal.
+     * Checks if two <code>Amount</code>s represent the same value, in which 
+     * case they are considered equal.
      * 
      * @param The <code>Amount</code> to compare with this amount.
      * 
