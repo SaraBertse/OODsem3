@@ -6,37 +6,34 @@
 package se.kth.sem3.model;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Disabled;
 
 /**
  *
  * @author sarab
  */
 public class AmountTest {
+
     private Amount amtNoArgConstr;
     private Amount amtWithAmt5;
-    
+
     public AmountTest() {
-        
+
     }
-    
+
     @BeforeEach
     public void setUp() {
         amtNoArgConstr = new Amount();
         amtWithAmt5 = new Amount(5);
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
 
-    
-    @Test 
+    @Test
     public void testPlus() {
         double amountOfOperand1 = 5.0;
         double amountOfOperand2 = 3.0;
@@ -46,8 +43,9 @@ public class AmountTest {
         Amount result = operand1.plus(operand2);
         assertEquals(expResult, result, "Wrong addition result");
     }
-   @Test
-    public void testPlusWithZero(){
+
+    @Test
+    public void testPlusWithZero() {
         double amountOfOperand1 = 5.0;
         double amountOfOperand2 = 0.0;
         Amount operand1 = new Amount(amountOfOperand1);
@@ -56,8 +54,9 @@ public class AmountTest {
         Amount result = operand1.plus(operand2);
         assertEquals(expResult, result, "Wrong addition with zero result");
     }
+
     @Test
-    public void testPlusWithNegative(){
+    public void testPlusWithNegative() {
         double amountOfOperand1 = 5.0;
         double amountOfOperand2 = -3.0;
         Amount operand1 = new Amount(amountOfOperand1);
@@ -77,7 +76,7 @@ public class AmountTest {
         Amount result = operand1.minus(operand2);
         assertEquals(expResult, result, "Wrong subtraction result");
     }
-        
+
     @Test
     public void testMinusWithZero() {
         double amountOfOperand1 = 5.0;
@@ -88,7 +87,7 @@ public class AmountTest {
         Amount result = operand1.minus(operand2);
         assertEquals(expResult, result, "Wrong subtraction result");
     }
-    
+
     @Test
     public void testMinusWithNegative() {
         double amountOfOperand1 = 5.0;
@@ -110,7 +109,7 @@ public class AmountTest {
         Amount result = operand1.multiplied(operand2);
         assertEquals(expResult, result, "Wrong multiplication result");
     }
-    
+
     @Test
     public void testMultipliedWithZero() {
         double amountOfOperand1 = 5.0;
@@ -120,9 +119,9 @@ public class AmountTest {
         Amount expResult = new Amount(amountOfOperand1 * amountOfOperand2);
         Amount result = operand1.multiplied(operand2);
         assertEquals(expResult, result, "Wrong multiplication result");
-        }
-    
-     @Test
+    }
+
+    @Test
     public void testMultipliedWithNegative() {
         double amountOfOperand1 = 5.0;
         double amountOfOperand2 = -3.0;
@@ -131,7 +130,7 @@ public class AmountTest {
         Amount expResult = new Amount(amountOfOperand1 * amountOfOperand2);
         Amount result = operand1.multiplied(operand2);
         assertEquals(expResult, result, "Wrong multiplication result");
-        }
+    }
 
     @Test
     public void testToString() {

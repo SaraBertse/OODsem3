@@ -13,7 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author sarab
  */
 public class CashRegisterTest {
+
     Sale sale = new Sale();
+
     public CashRegisterTest() {
     }
 
@@ -26,8 +28,8 @@ public class CashRegisterTest {
         Amount result = instance.addPayment(payment, totalPrice);
         assertEquals(expResult, result, "the calculated change is wrong");
     }
-    
-     @Test
+
+    @Test
     public void testAddPaymentNegative() {
         Amount payment = new Amount(-100);
         Amount totalPrice = new Amount(50);
@@ -37,8 +39,8 @@ public class CashRegisterTest {
         assertEquals(expResult, result, "the calculated change is wrong when the"
                 + "payment is negative");
     }
-    
-         @Test
+
+    @Test
     public void testAddPaymentZero() {
         Amount payment = new Amount(0);
         Amount totalPrice = new Amount(50);

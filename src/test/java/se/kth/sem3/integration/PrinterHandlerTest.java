@@ -1,4 +1,3 @@
-
 package se.kth.sem3.integration;
 
 import java.time.LocalDateTime;
@@ -15,8 +14,8 @@ import se.kth.sem3.model.PurchaseInfoDTO;
 import se.kth.sem3.model.Sale;
 import se.kth.sem3.model.SalesLogDTO;
 
-
 public class PrinterHandlerTest {
+
     Sale sale = new Sale();
     private PrinterHandler instance;
     Controller contr;
@@ -26,12 +25,11 @@ public class PrinterHandlerTest {
     HandlerCreator handle = new HandlerCreator();
     CashRegister cashreg = new CashRegister(sale);
     private Amount payment;
-    private Amount totalVAT; 
+    private Amount totalVAT;
     private Amount calculateTotalVAT = new Amount(0);
     private LocalDateTime timeAndDateOfSale = LocalDateTime.now();
     private List<Sale.ItemData> items = new ArrayList<>();
 
-    
     @BeforeEach
     public void setUp() {
         HandlerCreator handle = new HandlerCreator();
@@ -40,7 +38,7 @@ public class PrinterHandlerTest {
         contr = new Controller(handle, cashreg);
         instance = new PrinterHandler();
     }
-    
+
     @AfterEach
     public void tearDown() {
         instance = null;
@@ -53,8 +51,8 @@ public class PrinterHandlerTest {
         PurchaseInfoDTO purchaseInfo2 = contr.enterItem(112, 2);
         Amount totalPrice = contr.endSale(purchaseInfo2);
         Amount change = contr.enterAmountPaid(new Amount(200), totalPrice);
-        SalesLogDTO salesLog = new SalesLogDTO(timeAndDateOfSale, "BestShop", "Shopway 12", 
-        items, new Amount(300), new Amount(300), new Amount(300), new Amount(300));
+        SalesLogDTO salesLog = new SalesLogDTO(timeAndDateOfSale, "BestShop", "Shopway 12",
+                items, new Amount(300), new Amount(300), new Amount(300), new Amount(300));
         String result = instance.printReceipt(salesLog);
         String expResult = "Time and date of sale: " + salesLog.getTimeAndDateOfSale()
                 + "\nStore name: " + salesLog.getStoreName() + "\nStore address: "

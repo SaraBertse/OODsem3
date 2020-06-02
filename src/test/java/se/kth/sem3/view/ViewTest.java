@@ -1,4 +1,3 @@
-
 package se.kth.sem3.view;
 
 import org.junit.jupiter.api.AfterEach;
@@ -15,10 +14,11 @@ import se.kth.sem3.model.CashRegister;
 import se.kth.sem3.model.Sale;
 
 public class ViewTest {
+
     private View instanceToTest;
     private ByteArrayOutputStream printoutBuffer;
     private PrintStream originalSysOut;
-    
+
     @BeforeEach
     public void setUp() {
         HandlerCreator handle = new HandlerCreator();
@@ -26,17 +26,17 @@ public class ViewTest {
         CashRegister cashreg = new CashRegister(sale);
         Controller contr = new Controller(handle, cashreg);
         instanceToTest = new View(contr);
-        
+
         printoutBuffer = new ByteArrayOutputStream();
         PrintStream inMemSysOut = new PrintStream(printoutBuffer);
         originalSysOut = System.out;
         System.setOut(inMemSysOut);
     }
-    
+
     @AfterEach
     public void tearDown() {
         instanceToTest = null;
-        
+
         printoutBuffer = null;
         System.setOut(originalSysOut);
     }

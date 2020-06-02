@@ -15,18 +15,19 @@ import org.junit.jupiter.api.BeforeEach;
  * @author sarab
  */
 public class PurchaseInfoDTOTest {
+
     PurchaseInfoDTO infoDTOForTesting;
-    
+
     public PurchaseInfoDTOTest() {
     }
-    
+
     @BeforeEach
-    public void SetUp(){
-        PurchaseInfoDTO infoDTOForTesting = new PurchaseInfoDTO ("milk", new Amount(12.0), new Amount(12.0));
+    public void SetUp() {
+        PurchaseInfoDTO infoDTOForTesting = new PurchaseInfoDTO("milk", new Amount(12.0), new Amount(12.0));
     }
-    
+
     @AfterEach
-    public void TearDown(){
+    public void TearDown() {
         infoDTOForTesting = null;
     }
 
@@ -36,36 +37,36 @@ public class PurchaseInfoDTOTest {
         Amount price = new Amount(12.0);
         Amount runningTotal = new Amount(12.0);
         PurchaseInfoDTO purchaseInfo = new PurchaseInfoDTO(description, price, runningTotal);
-        String expResult = "Description: " + purchaseInfo.getDescription() + 
-                " Price: " + purchaseInfo.getPrice() +
-                " Running Total " + purchaseInfo.getRunningTotal();
+        String expResult = "Description: " + purchaseInfo.getDescription()
+                + " Price: " + purchaseInfo.getPrice()
+                + " Running Total " + purchaseInfo.getRunningTotal();
         String result = purchaseInfo.toString();
         assertEquals(expResult, result, "Wrong string returned by toString");
     }
-    
-        @Test
+
+    @Test
     public void testToStringEmptyString() {
         String description = "";
         Amount price = new Amount(12.0);
         Amount runningTotal = new Amount(12.0);
         PurchaseInfoDTO purchaseInfo = new PurchaseInfoDTO(description, price, runningTotal);
-        String expResult = "Description: " + purchaseInfo.getDescription() + 
-                " Price: " + purchaseInfo.getPrice() +
-                " Running Total " + purchaseInfo.getRunningTotal();
+        String expResult = "Description: " + purchaseInfo.getDescription()
+                + " Price: " + purchaseInfo.getPrice()
+                + " Running Total " + purchaseInfo.getRunningTotal();
         String result = purchaseInfo.toString();
         assertEquals(expResult, result, "Wrong string returned by toString when the String"
                 + " is empty");
     }
-    
-            @Test
+
+    @Test
     public void testToStringEmptyStringNullParam() {
         String description = null;
         Amount price = null;
         Amount runningTotal = null;
         PurchaseInfoDTO purchaseInfo = new PurchaseInfoDTO(description, price, runningTotal);
-        String expResult = "Description: " + purchaseInfo.getDescription() + 
-                " Price: " + purchaseInfo.getPrice() +
-                " Running Total " + purchaseInfo.getRunningTotal();
+        String expResult = "Description: " + purchaseInfo.getDescription()
+                + " Price: " + purchaseInfo.getPrice()
+                + " Running Total " + purchaseInfo.getRunningTotal();
         String result = purchaseInfo.toString();
         assertEquals(expResult, result, "Wrong string returned by toString when the"
                 + " parameters are null");
@@ -76,17 +77,17 @@ public class PurchaseInfoDTOTest {
         String description = "milk";
         Amount price = new Amount(12.0);
         Amount runningTotal = new Amount(12.0);
-        PurchaseInfoDTO expResult = new PurchaseInfoDTO ("milk", new Amount(12.0), new Amount(12.0));
+        PurchaseInfoDTO expResult = new PurchaseInfoDTO("milk", new Amount(12.0), new Amount(12.0));
         PurchaseInfoDTO result = new PurchaseInfoDTO(description, price, runningTotal);
         assertEquals(expResult, result, "Objects that should be equal are not.");
     }
-    
-        @Test
+
+    @Test
     public void testEqualsWhenNot() {
         String description = "juice";
         Amount price = new Amount(12.0);
         Amount runningTotal = new Amount(12.0);
-        PurchaseInfoDTO expResult = new PurchaseInfoDTO ("milk", new Amount(12.0), new Amount(12.0));
+        PurchaseInfoDTO expResult = new PurchaseInfoDTO("milk", new Amount(12.0), new Amount(12.0));
         PurchaseInfoDTO result = new PurchaseInfoDTO(description, price, runningTotal);
         boolean test = expResult.equals(result);
         assertTrue(test == false, "Objects are equal when they shouldn't be.");
