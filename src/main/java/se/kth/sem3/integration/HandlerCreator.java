@@ -23,7 +23,7 @@ public class HandlerCreator {
      * 
      * @return the external accounting database handler.
      */
-    public ExternalAccountingDBHandler getAccInvDBHandler(){
+    public ExternalAccountingDBHandler getExtAccDBHandler(){
         
         return extAcc;
     }

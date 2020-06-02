@@ -136,7 +136,16 @@ public class Sale {
         this.payment = paidAmount;
     }
     
+    /**
+     * Retrieves the payment that's made by the customer.
+     * 
+     * @return the value of the payment the customer made.
+     */
+    public Amount getPayment(){
+        return payment;
+    }
     
+  
     /**
      * This class represents item data, with description, quantity and price.
      */

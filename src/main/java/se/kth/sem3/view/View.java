@@ -49,6 +49,6 @@ public class View {
         
         String receipt = contr.getReceiptString();
         System.out.println(receipt);
-       
+        contr.updateExternalSystems();
     }   
 }

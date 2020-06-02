@@ -21,7 +21,6 @@ public class Controller {
     private ExternalAccountingDBHandler extAcc;
     private CashRegister cashreg;
     private Sale sale;
-    
     private List<Integer> enteredIDs = new ArrayList<>();
     PrinterHandler printerHandler = new PrinterHandler();
     
@@ -33,6 +32,7 @@ public class Controller {
     }
     //Need this for now, because otherwise sale.updatePurchaseItem doesn't work...
     //Sale sale = new Sale();
+   
     
     /**
      * Creates a new instance.
@@ -44,7 +44,7 @@ public class Controller {
     public Controller(HandlerCreator handler, CashRegister cashreg){
         this.handler = handler;  
         this.extInv = handler.getExtInvDBHandler();
-        this.extAcc = handler.getAccInvDBHandler();
+        this.extAcc = handler.getExtAccDBHandler();
         this.cashreg = cashreg;
     }
     
@@ -105,8 +105,9 @@ public class Controller {
      * @return Returns the formatted receipt with all relevant info. 
      */
     public String getReceiptString(){
+        System.out.println("test Controller 1");
         String receipt = printerHandler.printReceipt(sale.getSalesLogDTO());
-    
+        System.out.println("Test controlle r2");
         return receipt;
     }
     

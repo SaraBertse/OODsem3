@@ -74,7 +74,7 @@ public class ItemDTOTest {
         ItemDTO instance = new ItemDTO(description, price, taxRate);   
         String expResult = "description: " + description + " , price: " + price  + ", taxRate: " + taxRate; 
         String result = instance.toString();
-        assertEquals(expResult, result, "Wrong string returned by toString with empty parameters");
+        assertEquals(expResult, result, "Wrong string returned by toString with null parameters");
     }
     
     @Test

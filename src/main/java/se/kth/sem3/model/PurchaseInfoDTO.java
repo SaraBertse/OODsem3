@@ -65,4 +65,18 @@ public class PurchaseInfoDTO {
         return "Description: " + description + " Price: " + price + " Running Total " + runningTotal;
     }
     
+           public boolean equals(Object other){
+        if (other == null || !(other instanceof PurchaseInfoDTO)){
+                return false;
+        }
+        PurchaseInfoDTO purchaseInfoEquals = (PurchaseInfoDTO) other;
+        if (!purchaseInfoEquals.getDescription().equals(this.getDescription())){
+            return false;
+        }
+        if (!purchaseInfoEquals.getPrice().equals(this.getPrice()))
+            return false;
+        if (!purchaseInfoEquals.getRunningTotal().equals(this.getRunningTotal()))
+            return false;  
+        return true;
+    }
 }
